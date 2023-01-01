@@ -1,0 +1,26 @@
+<% layout('../../layouts/layout.eta') %>
+
+<h1>Question Quiz!</h1>
+
+<% if (it.topics && it.topics.length > 0) { %>
+
+<ul>
+  <% it.topics.sort(function(a, b) {
+  var nameA = a.name;
+  var nameB = b.name;
+  if (nameA < nameB) return -1;
+  if (nameA > nameB) return 1;
+  return 0;
+  }).forEach((item) => { %>
+  <li>
+      <a href="/quiz/<%= item.id %>"><%= item.name %></a>
+  </li>
+  <% }); %>
+</ul>
+
+<% } else { %>
+
+<p>None available.</p>
+
+<% } %>
+
